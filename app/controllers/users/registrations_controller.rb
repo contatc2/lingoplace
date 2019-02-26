@@ -10,9 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    if current_user.interpreter
+      redirect_to user_account(current_user)
+    else
+      redirect_to user_path(current_user)
+    end
+  end
 
   # GET /resource/edit
   # def edit
