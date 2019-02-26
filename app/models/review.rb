@@ -3,5 +3,4 @@ class Review < ApplicationRecord
 
   validates :description, presence: true
   validates :stars, presence: true
-  validates :jobs_id, presence: true
 end

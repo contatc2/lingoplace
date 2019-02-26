@@ -15,8 +15,8 @@ class User < ApplicationRecord
   validates :availability, presence: true
   validates :location, presence: true
   validates :can_travel, presence: true
-  validates :interpreter, presence: true
-  validates :phone, presence: true
+  # FOR INTERPRETER, DEFAULT VALUE IS NIL IF YOU ARE NOT AN INTERPRETER
   validates :daily_rate, presence: true
-  validates :linkedin, presence: true
+  # PHONE NOT ALWAYS NECESSARY FOR UI
+  # LINKEDIN NOT ALWAYS NECESSARY FOR UI
 end
