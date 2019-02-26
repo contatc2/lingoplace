@@ -10,5 +10,6 @@ class Job < ApplicationRecord
   validates :end_date, presence: true
   validates :date_posted, presence: true
   validates :budget, presence: true
-  validates :status, presence: true # ADD DEFAULT VALUE -- NOT STARTED IN MIGRATION FILE
+  # NO NEED FOR VALIDATION AS ADD DEFAULT VALUE IS NOT STARTED
+  #  DO NOT FORGET TO UPDATE MIGRATION FILE
 end
