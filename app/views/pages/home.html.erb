@@ -1,2 +1,13 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<%= link_to new_user_registration_path :interpreter => true do %>
+  <div class="btn btn-primary">
+    sign up as interpreter
+  </div>
+<% end %>
+<%= link_to new_user_registration_path do %>
+  <div class="btn btn-primary">
+    Post a job
+  </div>
+<% end %>

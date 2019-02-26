@@ -15,11 +15,34 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :description %>
+    <%= f.input :location %>
+    <%= f.input :picture %>
+    <%#= f.input :image_cache, as: :hidden %>
+    <%= f.input :phone %>
+    <%= f.input :linkedin %>
+
+    <% if params[:interpreter] %>
+      <%#= f.input :language, collection: ["spanish", "french"] %>
+      <%= f.input :availability %>
+      <%= f.input :daily_rate %>
+      <%= f.input :interpreter, value: true, as: :hidden %>
+      <%= f.input :can_travel %>
+    <% end %>
+
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
+<% end %>
+<% if params[:interpreter] %>
+  <%= link_to "browse jobs", jobs_path %>
+<% else %>
+  <%= link_to "post a job", new_job_path  %>
 <% end %>
 
 <%= render "devise/shared/links" %>
