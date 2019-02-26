@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
-  before_action :find_review, only: %i[show]
+  before_action :find_review, only: :show
+  before_action :set_job, only: %i[new create]
+
   def index
     @reviews = Review.all
   end
@@ -13,7 +15,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.job = @review
+    @review.job = @job
     if @review.save
       # No need for app/views/reviews/create.html/erb
       # As we are not displaying anything
@@ -25,11 +27,15 @@ class ReviewsController < ApplicationController
 
   private
 
-  def review_params
-    params.require(:review).permit(:description, :stars, :job_id)
-  end
-
   def find_review
     @review = Review.find(params[:id])
+  end
+
+  def set_job
+    @job = Job.find(params[:job_id])
+  end
+
+  def review_params
+    params.require(:review).permit(:description, :stars, :job_id)
   end
 end
