@@ -31,8 +31,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-      # No need for app/views/users/create.html/erb
-      # As we are not displaying anything
+    # No need for app/views/users/destroy.html/erb
+    # As we are not displaying anything
     redirect_to new_user_session(@user)
   end
 
@@ -43,6 +43,8 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :first_name, :last_name, :description,
+                                 :interpreter, :picture, :location, :linkedin,
+                                 :can_travel, :daily_rate, :phone, :availability)
   end
 end
