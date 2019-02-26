@@ -38,6 +38,10 @@ class UsersController < ApplicationController
 
   private
 
+  def find_user
+    @user = User.new(params[:id])
+  end
+
   def user_params
     params.require(:user).permit(:email)
   end
