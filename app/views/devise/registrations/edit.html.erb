@@ -31,11 +31,9 @@
     <%= f.input :phone %>
     <%= f.input :linkedin %>
 
-    <% if params[:interpreter] %>
-      <%#= f.input :language, collection: ["spanish", "french"] %>
+    <% if current_user.interpreter %>
       <%= f.input :availability %>
       <%= f.input :daily_rate %>
-      <%= f.input :interpreter, value: true, as: :hidden %>
       <%= f.input :can_travel %>
     <% end %>
   </div>
@@ -45,7 +43,8 @@
   </div>
 <% end %>
 
-<% if params[:interpreter] %>
+<% if current_user.interpreter %>
+  <%= link_to "add languages", new_user_interpreter_language(current_user) %>
   <%= link_to "browse jobs", jobs_path %>
 <% else %>
   <%= link_to "post a job", new_job_path  %>
