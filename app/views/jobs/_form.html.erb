@@ -1,0 +1,12 @@
+
+    <%= simple_form_for @job do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description, as: :text%>
+      <%= f.input :language %>
+      <%= f.input :start_date, as: :date, html5: true, html: { class: "form-horizontal" } %>
+      <%= f.input :end_date, as: :date, html5: true, html: { class: "form-horizontal" } %>
+      <%= f.input :budget, as: :integer, label: 'Budget in pounds £' %>
+      <%= f.button :submit %>
+    <% end %>
+
+<!-- Looking for a way to puth the end date and start date input fields on one same line, html: { class: 'form-horizontal' }, wrapper: :horizontal_form -->
