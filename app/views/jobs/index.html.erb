@@ -6,7 +6,7 @@
 <h1>List of jobs</h1>
 
 <% @jobs.each do |job| %>
-  <li> <%= link_to "#{job.name}", jobs_show(job) %> </li>
+  <li> <%= link_to job.name, jobs_show(job) %> </li>
   <p><%= job.language %></p>
   <p><%= job.description %></p>
   <p><%= job.budget %></p>
@@ -17,7 +17,7 @@
 
 <!-- Add a new job -->
 
-<%= link_to "Add new job", new_cocktail_path %>
+<%= link_to "Add new job", edit_user_registration_path %>
 
 </br>
 </br>
