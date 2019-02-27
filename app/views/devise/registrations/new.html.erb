@@ -15,6 +15,9 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <% if params[:interpreter].present? %>
+      <%= f.input :interpreter, input_html: {checked: true}%>
+    <% end %>
 
   </div>
 

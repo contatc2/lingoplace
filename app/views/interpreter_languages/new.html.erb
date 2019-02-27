@@ -1,0 +1,7 @@
+<h1>Add new Languages</h1>
+
+<%= simple_form_for [@user, @interpreter_language] do |f| %>
+  <%= f.association :language %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
+
