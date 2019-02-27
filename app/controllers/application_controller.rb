@@ -10,10 +10,17 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: %i[first_name last_name description picture location phone linkedin])
   end
+  # protected
 
-  protected
+  # def after_sign_in_path_for(resource)
+  #   if user_signed_in?
+  #     jobs_path
+  #   else
+  #     edit_user_registration_path(current_user)
+  #   end
+  # end
 
-  def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || stored_location_for(resource) || edit_user_registration_path(current_user)
-  end
+  # def after_sign_up_path_for(resource)
+  #   edit_user_registration_path(current_user)
+  # end
 end

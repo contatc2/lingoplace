@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
   root to: 'pages#home'
   resources :users, only: %i[index show] do
     resources :interpreter_languages, except: %i[show destroy]
