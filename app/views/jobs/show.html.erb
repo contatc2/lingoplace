@@ -1,2 +1,29 @@
-<h1>Jobs#show</h1>
-<p>Find me in app/views/jobs/show.html.erb</p>
+
+<h3><%= Your job %></h3>
+<p>Please find below all your job details</p>
+
+<% @job.each do |detail| %>
+  Job name: <%=detail.name %>
+  description: <%=detail.description %>
+  Language: <%=detail.language %>
+  Start date:<%=detail.start_date %>
+  End date: <%=detail.end_date %>
+  Date posted: <%=detail.date_posted %>
+  Budget: <%=detail.budget %>
+  Status: <%=detail.status %>
+  User Id: <%=detail.user_id %>
+  Interpreter Id: <%=detail.interpreter_id %>
+<% end %>
+
+<!-- When deleted you are sent back to the job index page -->
+
+<%= link_to "Delete job", jobs_path,
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+
+</br>
+</br>
+
+<!-- Go back to your profile -->
+
+<%= link_to "Back to my profile", user_path(@user) %>
