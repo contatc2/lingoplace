@@ -1,2 +1,26 @@
-<h1>Jobs#index</h1>
+<!-- <h1>Jobs#index</h1>
 <p>Find me in app/views/jobs/index.html.erb</p>
+ -->
+
+<h1>List of jobs</h1>
+
+<% @jobs.each do |job| %>
+<li> <%= link_to "#{job.name}", jobs_show(job) %> </li>
+<p><%= job.language %></p>
+<p><%= job.description %></p>
+<p><%= job.budget %></p>
+<% end %>
+
+</br>
+</br>
+
+<!-- Add a new job -->
+
+<%= link_to "Add new job", new_cocktail_path %>
+
+</br>
+</br>
+
+<!-- Go back to your profile -->
+
+<%= link_to "Back to my profile", user_path(@user) %>
