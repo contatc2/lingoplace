@@ -1,13 +1,21 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 
-<%= link_to new_user_registration_path :interpreter => true do %>
-  <div class="btn btn-primary">
-    sign up as interpreter
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-8 col-sm-2 col-xs-offset-1 col-xs-10">
+    <h1>The place for your translation needs</h1>
+    <h2>Broadern your reach with <strong>LingoPlace</strong> the translation market place.</h2>
   </div>
-<% end %>
-<%= link_to new_user_registration_path do %>
-  <div class="btn btn-primary">
-    Post a job
+  <div><P><img src="http://bestanimations.com/Earth&Space/Earth/earthglobeanimation/globe-earth-animation-7.gif" align = "right">
   </div>
-<% end %>
+  <div class="col-sm-offset-1 col-sm-8 col-sm-2 col-xs-offset-1 col-xs-10">
+    <%= link_to new_user_registration_path :interpreter => true do %>
+      <div class="btn btn-primary">
+        sign up as interpreter
+      </div>
+    <% end %>
+    <%= link_to new_user_registration_path do %>
+      <div class="btn btn-primary">
+        Post a job
+      </div>
+    <% end %>
+  </div>
+</div>
