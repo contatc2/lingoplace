@@ -43,6 +43,9 @@
 <% end %>
 
 <% if current_user.interpreter %>
+  <% current_user.languages.each do |language| %>
+    <%= language.name %>
+  <% end %>
   <%= link_to "add languages", new_user_interpreter_language_path(current_user) %>
   <%= link_to "browse jobs", jobs_path %>
 <% else %>
