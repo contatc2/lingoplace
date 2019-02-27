@@ -13,7 +13,7 @@ class InterpreterLanguagesController < ApplicationController
     @interpreter_language = InterpreterLanguage.new(interpreter_language_params)
     @interpreter_language.user = @user
     @interpreter_language.save
-    redirect_to edit_user_registration(@user)
+    redirect_to edit_user_registration_path(@user)
   end
 
   def edit

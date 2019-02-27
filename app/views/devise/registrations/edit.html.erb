@@ -44,7 +44,7 @@
 <% end %>
 
 <% if current_user.interpreter %>
-  <%= link_to "add languages", new_user_interpreter_language(current_user) %>
+  <%= link_to "add languages", new_user_interpreter_language_path(current_user) %>
   <%= link_to "browse jobs", jobs_path %>
 <% else %>
   <%= link_to "post a job", new_job_path  %>
