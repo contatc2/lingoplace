@@ -1,0 +1,17 @@
+<h3> Add a review </h3>
+<p> We would like to know your feedback </p>
+
+<%= simple_form_for [@job, @review] do |f|%>
+<%#= f.association :job | no need for associations see above @job%>
+<%= f.input :description %>
+<%= f.collection_radio_buttons :stars, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+  <%= b.radio_button + b.label {''} %>
+<% end %>
+
+</br>
+<%= f.submit "Submit", class: 'btn btn-primary' %>
+<% end %>
+
+</br>
+
+<%= link_to "Cancel", job_path %>
