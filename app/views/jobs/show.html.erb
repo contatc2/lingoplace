@@ -21,7 +21,7 @@
         </li><li>
       Status: <%= @job.status %>
         </li><li>
-      User Id: <%= @job.user_id %>
+      Requester: <%= "#{@job.user.first_name} #{@job.user.last_name}" %>
         </li><li>
       Interpreter Id: <%= @job.interpreter_id %>
         </li>
@@ -32,12 +32,15 @@
     <%= link_to "Delete job", jobs_path,
           method: :delete,
           data: { confirm: "Are you sure?" } %>
+    <%= link_to "Edit job", edit_user_job_path(@job),
+          method: :patch %>
 
     </br>
+    <%= link_to "Back to all jobs", jobs_path %>
     </br>
 
     <!-- Go back to your profile -->
 
-    <%= link_to "Back to my profile", edit_user_registration_path(current_user) %>
+    <%= link_to "Back to my profile", edit_user_registration_path %>
   </div>
 </div>
