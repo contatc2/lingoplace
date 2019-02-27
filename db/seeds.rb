@@ -13,6 +13,8 @@ Language.destroy_all
 Review.destroy_all
 
 
+# user = User.create!(email: 'Jamesu@bond.com', password: 'password', interpreter: false)
+
 puts 'Creating users...'
 users_attributes = [
   {
@@ -121,7 +123,7 @@ jobs_attributes = [
     budget: 50000000,
     status:     'Not started',
     user_id: 2,
-    interpreter_id: 2,
+    interpreter_id: 1,
   },
   {
     name:       'Confidential documents',
@@ -133,7 +135,7 @@ jobs_attributes = [
     budget: 10000000,
     status:     'Not started',
     user_id: 1,
-    interpreter_id: 1,
+    interpreter_id: 2,
   },
    {
     name:       'Cricket',
@@ -145,7 +147,7 @@ jobs_attributes = [
     budget: 1,
     status:     'Not started',
     user_id: 4,
-    interpreter_id: 4,
+    interpreter_id: 3,
   },
   {
     name:       'Saturn tourist guide',
@@ -156,8 +158,8 @@ jobs_attributes = [
     date_posted:  'DateTime.strptime("09/08/2013 17:00", "%m/%d/%Y %H:%M"),',
     budget: 1,
     status:     'Completed',
-    user_id: 5,
-    interpreter_id: 5,
+    user_id: 1,
+    interpreter_id: 3,
   },
 ]
 Job.create!(jobs_attributes)
@@ -176,7 +178,7 @@ puts 'Jobs Finished!'
   {
     description: 'Fantastic translation',
     stars:  5,
-    job_id:  0,
+    job_id:  2,
     created_at:  'DateTime.strptime("09/09/2015 17:00", "%m/%d/%Y %H:%M"),',
     updated_at:   'DateTime.strptime("09/09/2019 17:00", "%m/%d/%Y %H:%M"),',
   },
