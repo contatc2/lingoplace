@@ -6,10 +6,10 @@
 <h1>List of jobs</h1>
 
 <% @jobs.each do |job| %>
-  <li> <%= link_to job.name, jobs_show(job) %> </li>
-  <p><%= job.language %></p>
-  <p><%= job.description %></p>
-  <p><%= job.budget %></p>
+<li> <%= link_to job.name, jobs_path(job) %> </li>
+<p><%= job.language %></p>
+<p><%= job.description %></p>
+<p><%= job.budget %></p>
 <% end %>
 
 </br>
@@ -24,4 +24,4 @@
 
 <!-- Go back to your profile -->
 
-<%= link_to "Back to my profile", user_path(@user) %>
+<%= link_to "Back to my profile",edit_user_registration_path(@user) %>
