@@ -1,23 +1,29 @@
-<<<<<<< HEAD
-2<h1>Jobs#show</h1>
-<p>Find me in app/views/jobs/show.html.erb</p>
-=======
+<h3>Your job</h3>
+  <p>Please find below all your job details</p>
 
-<h3><%= Your job %></h3>
-<p>Please find below all your job details</p>
-
-<% @job.each do |detail| %>
-  Job name: <%=detail.name %>
-  description: <%=detail.description %>
-  Language: <%=detail.language %>
-  Start date:<%=detail.start_date %>
-  End date: <%=detail.end_date %>
-  Date posted: <%=detail.date_posted %>
-  Budget: <%=detail.budget %>
-  Status: <%=detail.status %>
-  User Id: <%=detail.user_id %>
-  Interpreter Id: <%=detail.interpreter_id %>
-<% end %>
+  <ul>
+    <li>
+  Job name: <%= @job.name %>
+    </li><li>
+  description: <%= @job.description %>
+    </li><li>
+  Language: <%= @job.language %>
+    </li><li>
+  Start date:<%= @job.start_date %>
+    </li><li>
+  End date: <%= @job.end_date %>
+    </li><li>
+  Date posted: <%= @job.date_posted %>
+    </li><li>
+  Budget: <%= @job.budget %>
+    </li><li>
+  Status: <%= @job.status %>
+    </li><li>
+  User Id: <%= @job.user_id %>
+    </li><li>
+  Interpreter Id: <%= @job.interpreter_id %>
+    </li>
+  <ul>
 
 <!-- When deleted you are sent back to the job index page -->
 
@@ -30,5 +36,4 @@
 
 <!-- Go back to your profile -->
 
-<%= link_to "Back to my profile", user_path(@user) %>
->>>>>>> aceebe2cebad99ffd90b16bc8752afcec115419d
+<%= link_to "Back to my profile", edit_user_registration_path(current_user) %>
