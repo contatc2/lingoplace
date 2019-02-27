@@ -6,10 +6,10 @@
 <h1>List of jobs</h1>
 
 <% @jobs.each do |job| %>
-<li> <%= link_to "#{job.name}", jobs_show(job) %> </li>
-<p><%= job.language %></p>
-<p><%= job.description %></p>
-<p><%= job.budget %></p>
+  <li> <%= link_to "#{job.name}", jobs_show(job) %> </li>
+  <p><%= job.language %></p>
+  <p><%= job.description %></p>
+  <p><%= job.budget %></p>
 <% end %>
 
 </br>
