@@ -1,6 +1,5 @@
 class JobsController < ApplicationController
   before_action :find_job, only: %i[show edit update destroy]
- # before_action :set_user, only: %i[create destroy show]
   def index
     @jobs = Job.all
   end
@@ -10,6 +9,17 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+  end
+
+  def create
+    @job = Job.new(job_params)
+    @job.user = current_user
+    @job.date_posted = Time.today
+    if @job.save
+      redirect_to edit_user_registration_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -23,36 +33,19 @@ class JobsController < ApplicationController
     end
   end
 
-  def create
-    @job = Job.new(job_params)
-    @job.user = current_user
-    if @job.save
-      # No need for app/views/users/create.html/erb
-      # As we are not displaying anything
-      redirect_to jobs_path
-    else
-      render :new
-    end
-  end
-
   def destroy
+    @user = @job.user
     @job.destroy
-    # No need for app/views/users/destroy.html/erb
-    # As we are not displaying anything
-    redirect_to jobs_path
+    redirect_to edit_user_registration_path
   end
 
   private
 
   def job_params
-    params.require(:job).permit(:name, :description, :budget, :start_date, :end_date, :posted_date, :language)
+    params.require(:job).permit(:name, :description, :budget, :start_date, :end_date, :language_id)
   end
 
   def find_job
     @job = Job.find(params[:id])
   end
-
-  #def set_user
-   # @user = User.find(params[:user_id])
-  #end
 end

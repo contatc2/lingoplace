@@ -1,39 +1,45 @@
-<h3>Your job</h3>
-  <p>Please find below all your job details</p>
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
+    <h3>Your job</h3>
+      <p>Please find below all your job details</p>
 
-  <ul>
-    <li>
-  Job name: <%= @job.name %>
-    </li><li>
-  description: <%= @job.description %>
-    </li><li>
-  Language: <%= @job.language %>
-    </li><li>
-  Start date:<%= @job.start_date %>
-    </li><li>
-  End date: <%= @job.end_date %>
-    </li><li>
-  Date posted: <%= @job.date_posted %>
-    </li><li>
-  Budget: <%= @job.budget %>
-    </li><li>
-  Status: <%= @job.status %>
-    </li><li>
-  User Id: <%= @job.user_id %>
-    </li><li>
-  Interpreter Id: <%= @job.interpreter_id %>
-    </li>
-  <ul>
+      <ul>
+        <li>
+      Job name: <%= @job.name %>
+        </li><li>
+      description: <%= @job.description %>
+        </li><li>
+      Language: <%= @job.language %>
+        </li><li>
+      Start date:<%= @job.start_date %>
+        </li><li>
+      End date: <%= @job.end_date %>
+        </li><li>
+      Date posted: <%= @job.date_posted %>
+        </li><li>
+      Budget: <%= @job.budget %>
+        </li><li>
+      Status: <%= @job.status %>
+        </li><li>
+      Requester: <%= "#{@job.user.first_name} #{@job.user.last_name}" %>
+        </li><li>
+      Interpreter Id: <%= @job.interpreter_id %>
+        </li>
+      <ul>
 
-<!-- When deleted you are sent back to the job index page -->
+    <!-- When deleted you are sent back to the job index page -->
 
-<%= link_to "Delete job", jobs_path,
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
+    <%= link_to "Delete job", jobs_path,
+          method: :delete,
+          data: { confirm: "Are you sure?" } %>
+    <%= link_to "Edit job", edit_job_path(@job) %>
 
-</br>
-</br>
+    </br>
+    <%= link_to "Back to all jobs", jobs_path %>
+    </br>
 
-<!-- Go back to your profile -->
+    <!-- Go back to your profile -->
 
-<%= link_to "Back to my profile", edit_user_registration_path(current_user) %>
+    <%= link_to "Back to my profile", edit_user_registration_path %>
+  </div>
+</div>
