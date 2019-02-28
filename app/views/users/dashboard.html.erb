@@ -56,7 +56,12 @@
         <% end %>
       </div>
       <div>
-        <p class="btn btn-primary">Book</p>
+        <%= link_to "Book", {controller: "job",
+                              action: "new",
+                              language: params[:query]
+                            }
+
+        new_job_path, class:"btn btn-primary"%>
       </div>
     </div>
   <% end %>
