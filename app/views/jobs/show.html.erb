@@ -15,8 +15,6 @@
             <li><strong>Requester: </strong> <%= "#{@job.user.first_name} #{@job.user.last_name}"%></li>
             <li><strong>Interpreter: </strong> <%= link_to "#{@job.interpreter.first_name} #{@job.interpreter.last_name}", user_path(@job.interpreter) %></li>
 
-
-
           </ul>
           <u>Details:</u>
           <ul>
@@ -45,12 +43,15 @@
 
       <!-- When deleted you are sent back to the job index page -->
       <div class="edits text-center">
+        <%= link_to "Edit Rating", edit_job_path(@job) %>
+        </br>
         <%= link_to "Edit", edit_job_path(@job) %>
         </br>
         <%= link_to "Delete", jobs_path,
               method: :delete,
               data: { confirm: "Are you sure?" } %>
         </br>
+
         <%= link_to "Back to all jobs", jobs_path %>
         </br>
         <!-- Go back to your profile -->
