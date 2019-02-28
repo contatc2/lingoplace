@@ -8,6 +8,13 @@ class User < ApplicationRecord
   has_many :languages, through: :interpreter_languages
 
   validates :email, presence: true
+
+  include PgSearch
+  pg_search_scope :search_by_name,
+                  against: %i[first_name last_name],
+                  using: {
+                    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+                  }
   # validates :first_name, presence: true
   # validates :last_name, presence: true
   # validates :description, presence: true

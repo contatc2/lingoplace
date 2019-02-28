@@ -3,4 +3,42 @@
 
 <!-- search form -->
 
-<div></div>
+<div>
+  <%= form_tag users_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "choose a language"
+  %>
+<% end %>
+
+
+
+
+</div>
+
+<!-- exixting jobs -->
+<div>
+  <h2>Existing jobs</h2>
+
+  <% @jobs.each do |job| %>
+  <% @interpreter = User.find(job.interpreter_id) %>
+
+  <div class="card-product">
+    <!-- replace image with the interpreter image with cloudinary? -->
+  <img src=<%= @interpreter.image %> >
+  <div class="card-product-infos">
+    <h2><%= job.name %></h2>
+    <p><%= job.description %></p>
+    <p><%= @interpreter.first_name  %> <%= @interpreter.last_name  %></p>
+    <p><%= job.language %></p>
+  <% end %>
+  </div>
+</div>
+
+
+
+
+
+</div>
+
