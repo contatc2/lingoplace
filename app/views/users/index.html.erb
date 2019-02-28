@@ -1,14 +1,18 @@
-<h1>List of interprets</h1>
+<h1>Find the best interpreter for the job</h1>
 <div class="cards">
   <% @users.each do |user| %>
-   <% if user.interpreter = true %>
-      <%= link_to(user_path(user)) do %>
-        <div div class="card-category align-text-bottom" style="background-image: url(<%="#{user.picture}"%>)">
-            <p><%= user.first_name %></p>
-            <p><%= user.last_name %></p>
-            <p><% user.email %></p>
-        </div>
-      <% end %>
+    <% if user.interpreter = true %>
+      <div class="col-sm-3">
+        <%= link_to user_path(user) do %>
+          <div class="card" style="background-image: url(<%="#{user.picture}"%>)">
+            <div div class="card-text">
+              <p><%= user.first_name %>&nbsp;</p>
+              <p><%= user.last_name %></p>
+              <p><% user.email %></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end  %>
   <% end %>
 </div>
