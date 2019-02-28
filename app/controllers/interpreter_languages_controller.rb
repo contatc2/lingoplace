@@ -13,7 +13,7 @@ class InterpreterLanguagesController < ApplicationController
     @interpreter_language = InterpreterLanguage.new(interpreter_language_params)
     @interpreter_language.user = @user
     @interpreter_language.save
-    redirect_to edit_user_registration_path(@user)
+    redirect_to edit_user_registration_path
   end
 
   def edit
@@ -21,7 +21,7 @@ class InterpreterLanguagesController < ApplicationController
 
   def update
     @interpreter_language.update(interpreter_language_params)
-    redirect_to edit_user_registration(@user)
+    redirect_to edit_user_registration
   end
 
   private
@@ -35,6 +35,6 @@ class InterpreterLanguagesController < ApplicationController
   end
 
   def interpreter_language_params
-    params.require(:interpreter_language).permit(:name)
+    params.require(:interpreter_language).permit(:language_id)
   end
 end

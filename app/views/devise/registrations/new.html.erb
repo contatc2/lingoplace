@@ -16,7 +16,7 @@
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
     <% if params[:interpreter].present? %>
-      <%= f.input :interpreter, input_html: {checked: true}%>
+      <%= f.hidden_field :interpreter, value: true %>
     <% end %>
 
   </div>

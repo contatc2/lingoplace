@@ -1,0 +1,22 @@
+<h1>List of interprets</h1>
+
+<% @users.each do |user| %>
+ <% if user.interpreter = true %>
+
+    <div>
+        <img src="<%="#{user.picture}"%>", class="img-circle", width=200px>
+        <p><%= user.first_name %>
+        <p><%= user.last_name %></p>
+        <p><%= user.email %></p>
+    </div>
+
+  <% end  %>
+<% end %>
+
+</br>
+</br>
+
+<!-- Go back to your profile -->
+
+<%= link_to "Back to my profile",edit_user_registration_path(@user) %>
+

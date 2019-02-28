@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_26_192658) do
+ActiveRecord::Schema.define(version: 2019_02_27_184619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2019_02_26_192658) do
   create_table "jobs", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.string "language"
     t.date "start_date"
     t.date "end_date"
     t.date "date_posted"
@@ -37,7 +36,9 @@ ActiveRecord::Schema.define(version: 2019_02_26_192658) do
     t.bigint "interpreter_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "language_id"
     t.index ["interpreter_id"], name: "index_jobs_on_interpreter_id"
+    t.index ["language_id"], name: "index_jobs_on_language_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -81,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_02_26_192658) do
 
   add_foreign_key "interpreter_languages", "languages"
   add_foreign_key "interpreter_languages", "users"
+  add_foreign_key "jobs", "languages"
   add_foreign_key "jobs", "users"
   add_foreign_key "jobs", "users", column: "interpreter_id"
   add_foreign_key "reviews", "jobs"

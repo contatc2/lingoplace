@@ -2,7 +2,7 @@
     <%= simple_form_for @job do |f| %>
       <%= f.input :name %>
       <%= f.input :description, as: :text%>
-      <%= f.input :language %>
+      <%= f.association :language %>
       <%= f.input :start_date, as: :date, html5: true, html: { class: "form-horizontal" } %>
       <%= f.input :end_date, as: :date, html5: true, html: { class: "form-horizontal" } %>
       <%= f.input :budget, as: :integer, label: 'Budget in pounds £' %>
