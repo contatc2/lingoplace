@@ -1,45 +1,60 @@
-<div class="row">
-  <div class="col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
-    <h3>Your job</h3>
-      <p>Please find below all your job details</p>
+<div class="container">
+  </br>
+  </br>
+  <div class="row justify-content-around">
+    <div class="col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
+      <div class="card-profile">
+          <div class="job-intro text-center">
+            <h3><strong><%= @job.name %></strong></h3>
+            <i>Please find below your job attributes</i>
+            </br>
+            </br>
+          </div>
+          <u>Participants:</u>
+          <ul>
+            <li><strong>Requester: </strong> <%= "#{@job.user.first_name} #{@job.user.last_name}" %></li>
+            <li><strong>Interpreter: </strong> <%= "#{@job.interpreter.first_name} #{@job.interpreter.last_name}" %></li>
+          </ul>
+          <u>Details:</u>
+          <ul>
+            <li><strong>Description: </strong> </li><%= @job.description %></li>
+            <li><strong>Language: </strong> <%= @job.language %></li>
+            <li><strong>Start date: </strong> <%= @job.start_date %></li>
+            <li><strong>End date: </strong> <%= @job.end_date %></li>
+            <li><strong>Date posted: </strong> <%= @job.date_posted %></li>
+            <li><strong>Budget: </strong> <%= @job.budget %></li>
+            <li><strong>Status: </strong> <%= @job.status %></li>
+          </ul>
+          <u>Ratings:</u>
+            <ul>
+              <% @job.reviews.each do |review| %>
+                <% review.stars.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <% (5 - review.stars).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                </br>
+                <%= review.description %>
+              <% end %>
+            </ul>
+      </div>
 
-      <ul>
-        <li>
-      Job name: <%= @job.name %>
-        </li><li>
-      description: <%= @job.description %>
-        </li><li>
-      Language: <%= @job.language %>
-        </li><li>
-      Start date:<%= @job.start_date %>
-        </li><li>
-      End date: <%= @job.end_date %>
-        </li><li>
-      Date posted: <%= @job.date_posted %>
-        </li><li>
-      Budget: <%= @job.budget %>
-        </li><li>
-      Status: <%= @job.status %>
-        </li><li>
-      Requester: <%= "#{@job.user.first_name} #{@job.user.last_name}" %>
-        </li><li>
-      Interpreter Id: <%= @job.interpreter_id %>
-        </li>
-      <ul>
-
-    <!-- When deleted you are sent back to the job index page -->
-
-    <%= link_to "Delete job", jobs_path,
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
-    <%= link_to "Edit job", edit_job_path(@job) %>
-
-    </br>
-    <%= link_to "Back to all jobs", jobs_path %>
-    </br>
-
-    <!-- Go back to your profile -->
-
-    <%= link_to "Back to my profile", edit_user_registration_path %>
+      <!-- When deleted you are sent back to the job index page -->
+      <div class="edits text-center">
+        <%= link_to "Edit", edit_job_path(@job) %>
+        </br>
+        <%= link_to "Delete", jobs_path,
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+        </br>
+        <%= link_to "Back to all jobs", jobs_path %>
+        </br>
+        <!-- Go back to your profile -->
+        <%= link_to "Back to my profile", edit_user_registration_path %>
+      </div>
+    </div>
   </div>
+</br>
+</br>
 </div>
