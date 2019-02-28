@@ -12,6 +12,10 @@ class User < ApplicationRecord
   include PgSearch
   pg_search_scope :search_by_name,
                   against: %i[first_name last_name],
+                  associated_against: {
+                    interpreter_languages: :language_id,
+                    languages: :name
+                  },
                   using: {
                     tsearch: { prefix: true } # <-- now `superman batm` will return something!
                   }
