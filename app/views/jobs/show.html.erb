@@ -12,8 +12,11 @@
           </div>
           <u>Participants:</u>
           <ul>
-            <li><strong>Requester: </strong> <%= "#{@job.user.first_name} #{@job.user.last_name}" %></li>
-            <li><strong>Interpreter: </strong> <%= "#{@job.interpreter.first_name} #{@job.interpreter.last_name}" %></li>
+            <li><strong>Requester: </strong> <%= "#{@job.user.first_name} #{@job.user.last_name}"%></li>
+            <li><strong>Interpreter: </strong> <%= link_to "#{@job.interpreter.first_name} #{@job.interpreter.last_name}", user_path(@job.interpreter) %></li>
+
+
+
           </ul>
           <u>Details:</u>
           <ul>
