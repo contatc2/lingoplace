@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <img src="<%="#{@user.picture}"%>", class="img-circle", width=100px>
+    </div>
+    <div class="col-sm-6">
+      <h3><strong><%= @user.first_name %> <%= @user.last_name.upcase%></strong></h3>
+      </br>
+      <u>Description:</u>
+      </br>
+      <%= @user.description %>
+      </br>
+      </br>
+    </div>
+  </div>
+
+<!--   <pading = "3px">
+ -->
+  <div class="row">
+    <div class="col">
+      <u>Personal details:</u>
+      </br>
+      <ul>
+        <li> <strong>Email:</strong> <%= @user.email %> </li>
+        <li> <strong>Phone number:</strong> <%= @user.phone %> </li>
+        <li> <strong>Daily rate:</strong> <%= @user.daily_rate %> </li>
+        <li> <strong>Address:</strong> <%= @user.location %> </li>
+        <li> <strong>Availability:</strong> <%= @user.availability ? "YES" : "NO" %> </li>
+        <li> <strong>Willing to travel:</strong> <%= @user.can_travel ? "YES" : "NO" %> </li>
+        <li> <strong>LinkedIn profile:</strong> <%= @user.linkedin %> </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
