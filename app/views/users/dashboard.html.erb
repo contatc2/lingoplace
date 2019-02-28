@@ -56,7 +56,7 @@
         <% end %>
       </div>
       <div>
-        <p class="btn btn-primary">Book</p>
+        <%= link_to "Book", new_job_path(lquery: params[:query], interpreter: user.id) %>
       </div>
     </div>
   <% end %>
