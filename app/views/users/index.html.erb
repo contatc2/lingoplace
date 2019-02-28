@@ -1,18 +1,17 @@
 <h1>List of interprets</h1>
-
-<% @users.each do |user| %>
- <% if user.interpreter = true %>
-
-    <div>
-        <img src="<%="#{user.picture}"%>", class="img-circle", width=200px>
-        <p><%= user.first_name %>
-        <p><%= user.last_name %></p>
-        <p><%= user.email %></p>
-    </div>
-
-  <% end  %>
-<% end %>
-
+<div class="cards">
+  <% @users.each do |user| %>
+   <% if user.interpreter = true %>
+      <%= link_to(user_path(user)) do %>
+        <div div class="card-category align-text-bottom" style="background-image: url(<%="#{user.picture}"%>)">
+            <p><%= user.first_name %></p>
+            <p><%= user.last_name %></p>
+            <p><% user.email %></p>
+        </div>
+      <% end %>
+    <% end  %>
+  <% end %>
+</div>
 </br>
 </br>
 
