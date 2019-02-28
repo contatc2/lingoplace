@@ -3,4 +3,65 @@
 
 <!-- search form -->
 
-<div></div>
+<div>
+  <%= form_tag dashboard_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "choose a language"
+  %>
+<% end %>
+
+</div>
+
+<!-- exixting jobs -->
+<div>
+  <h2>Existing jobs</h2>
+
+  <% @jobs.each do |job| %>
+    <% @interpreter = User.find(job.interpreter_id) %>
+
+    <div class="card-product">
+      <!-- replace image with the interpreter image with cloudinary? -->
+      <img src=<%= @interpreter.picture %> >
+      <div class="card-product-infos">
+        <h2><%= job.name %></h2>
+        <p><%= job.description %></p>
+        <p><%= @interpreter.first_name  %> <%= @interpreter.last_name  %></p>
+        <p><%= job.language %></p>
+      </div>
+      <div>
+        <p class="btn btn-success"><%= job.status %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- List of interpreters -->
+
+<div>
+  <h2>List of interpreters</h2>
+
+  <% @users.each do |user| %>
+
+    <div class="card-product">
+      <!-- replace image with the interpreter image with cloudinary? -->
+      <img src=<%= user.picture %> >
+      <div class="card-product-infos">
+        <h2><%= user.first_name  %> <%= user.last_name %></h2>
+        <p><%= user.description %></p>
+        <p><%= user.daily_rate %></p>
+        <% user.languages.each do |language| %>
+          <p><%= language.name %></p>
+        <% end %>
+      </div>
+      <div>
+        <p class="btn btn-primary">Book</p>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+
+

@@ -8,7 +8,13 @@ class UsersController < ApplicationController
   end
 
   def dashboard
+    @query = params[:query]
     @jobs = @user.jobs
+    if @query.present?
+      @users = User.search_by_name(@query)
+    else
+      @users = User.where(interpreter: true)
+    end
   end
 
   private
