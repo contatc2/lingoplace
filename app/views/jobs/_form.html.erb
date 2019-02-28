@@ -1,12 +1,17 @@
 
-    <%= simple_form_for @job do |f| %>
+    <%= simple_form_for(job) do |f| %>
       <%= f.input :name %>
       <%= f.input :description, as: :text%>
-      <%= f.association :language %>
+      <% if params[:lquery].present? %>
+      <%= f.input :language_id, input_html: {value: Language.where("name ILIKE ?", "%#{params[:lquery]}%").ids} %>
+      <% else %>
+        <%= f.association :language %>
+      <% end %>
+      <%= f.hidden_field :interpreter_id, value: params[:interpreter] %>
       <%= f.input :start_date, as: :date, html5: true, html: { class: "form-horizontal" } %>
       <%= f.input :end_date, as: :date, html5: true, html: { class: "form-horizontal" } %>
       <%= f.input :budget, as: :integer, label: 'Budget in pounds £' %>
-      <%= f.button :submit %>
+      <%= f.button :submit, input_html: {class:'btn btn-primary'} %>
     <% end %>
 
 <!-- Looking for a way to puth the end date and start date input fields on one same line, html: { class: 'form-horizontal' }, wrapper: :horizontal_form -->

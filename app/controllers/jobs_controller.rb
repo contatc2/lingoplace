@@ -14,9 +14,9 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.user = current_user
-    @job.date_posted = Time.today
+    @job.date_posted = Date.today
     if @job.save
-      redirect_to edit_user_registration_path
+      redirect_to job_path(@job)
     else
       render :new
     end
@@ -42,7 +42,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:name, :description, :budget, :start_date, :end_date, :language_id)
+    params.require(:job).permit(:name, :description, :budget, :start_date, :end_date, :language_id, :interpreter_id)
   end
 
   def find_job
