@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: :show
+  before_action :find_user, only: %i[show dashboard]
   def index
     @users = User.where(interpreter: true)
   end
@@ -7,9 +7,13 @@ class UsersController < ApplicationController
   def show
   end
 
+  def dashboard
+    @jobs = @user.jobs
+  end
+
   private
 
   def find_user
-    @user = User.new(params[:id])
+    @user = User.find(params[:id])
   end
 end

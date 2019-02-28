@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :jobs do
     resources :reviews, only: %i[index show new create]
   end
+  get 'users/:id/dashboard', to: 'users#dashboard', as: 'dashboard'
 end
