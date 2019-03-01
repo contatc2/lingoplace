@@ -20,20 +20,21 @@
 
   <% @jobs.each do |job| %>
     <% @interpreter = User.find(job.interpreter_id) %>
-
-    <div class="card-product">
-      <!-- replace image with the interpreter image with cloudinary? -->
-      <img src=<%= @interpreter.picture %> >
-      <div class="card-product-infos">
-        <h2><%= job.name %></h2>
-        <p><%= job.description %></p>
-        <p><%= @interpreter.first_name  %> <%= @interpreter.last_name  %></p>
-        <p><%= job.language %></p>
+    <%= link_to job_path(job), class: "no-hover" do %>
+      <div class="card-product my-3">
+        <!-- replace image with the interpreter image with cloudinary? -->
+        <img src=<%= @interpreter.picture %> >
+        <div class="card-product-infos">
+          <h2><%= job.name %></h2>
+          <p><%= job.description %></p>
+          <p><%= @interpreter.first_name  %> <%= @interpreter.last_name  %></p>
+          <p><%= job.language %></p>
+        </div>
+        <div>
+          <p class="btn btn-success"><%= job.status %></p>
+        </div>
       </div>
-      <div>
-        <p class="btn btn-success"><%= job.status %></p>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 
@@ -43,22 +44,24 @@
   <h2>List of interpreters</h2>
 
   <% @users.each do |user| %>
+    <%= link_to user_path(user), class: "no-hover" do %>
+      <div class="card-product my-3">
+        <!-- replace image with the interpreter image with cloudinary? -->
 
-    <div class="card-product">
-      <!-- replace image with the interpreter image with cloudinary? -->
-      <img src=<%= user.picture %> >
-      <div class="card-product-infos">
-        <h2><%= user.first_name  %> <%= user.last_name %></h2>
-        <p><%= user.description %></p>
-        <p><%= user.daily_rate %></p>
-        <% user.languages.each do |language| %>
-          <p><%= language.name %></p>
-        <% end %>
+        <div class="card-product-infos">
+          <img src=<%= user.picture %> ><br>
+          <%= user.first_name  %> <%= user.last_name %>
+          <%= user.description %>
+          <% user.daily_rate %>
+          <% user.languages.each do |language| %>
+          <%= language.name %>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "Book", new_job_path(lquery: params[:query], interpreter: user.id) %>
+        </div>
       </div>
-      <div>
-        <%= link_to "Book", new_job_path(lquery: params[:query], interpreter: user.id) %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 
 </div>

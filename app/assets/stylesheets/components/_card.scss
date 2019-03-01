@@ -11,9 +11,6 @@
   text-decoration: none;
 }
 
-.cards a:hover {
-  text-decoration: none;
-}
 .card-category {
   margin: 20px;
   background-size: cover;
@@ -31,14 +28,20 @@
   filter:grayscale(60%);
 }
 
-.card-category:hover, .card-category:active, .card-category:visited, {
+.card-category:hover, .card-category:active, .card-category:visited, .cards a:hover {
   filter:none;
+  text-decoration: none;
+}
 
+.no-hover, no-hover:hover{
+  filter:none;
+  text-decoration: none !important;
+  color: black !important;
 }
 
 .card-product {
   overflow: hidden;
-  height: 120px;
+  height: 200px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
