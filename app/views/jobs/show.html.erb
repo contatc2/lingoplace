@@ -26,7 +26,7 @@
             <li><strong>Budget: </strong> <%= @job.budget %></li>
             <li><strong>Status: </strong> <%= @job.status %></li>
           </ul>
-          <u>Reviews:</u>
+          <u>Review:</u>
             <ul>
               <% @job.reviews.each do |review| %>
                 <% review.stars.times do %>
