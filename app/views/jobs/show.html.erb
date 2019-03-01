@@ -1,25 +1,24 @@
-<div class="container">
-  </br>
-  </br>
+<!-- <div class="container"> -->
+
   <div class="row justify-content-around">
     <div class="col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
-      <div class="card-profile">
-          <div class="job-intro text-center">
-            <h3><strong><%= @job.name %></strong></h3>
-            <i>Please find below your mission attributes</i>
-            </br>
-            </br>
+      <div class="card mt-5 p-3" style="height:100vh;">
+          <div class="text-center pb-3">
+            <h2><%= @job.name %></h2>
+            <p>Your mission details:</p>
           </div>
-          <u>Participants:</u>
+          <u>Team</u>
           <ul>
             <li><strong>Requester: </strong> <%= "#{@job.user.first_name} #{@job.user.last_name}"%></li>
             <li><strong>Interpreter: </strong> <%= link_to "#{@job.interpreter.first_name} #{@job.interpreter.last_name}", user_path(@job.interpreter) %></li>
 
           </ul>
-          <u>Details:</u>
+          <u>Details</u>
           <ul>
             <li><strong>Description: </strong> </li><%= @job.description %></li>
-            <li><strong>Language: </strong> <%= @job.language %></li>
+            <% if @job.language %>
+              <li><strong>Language: </strong> <%= @job.language.name %></li>
+            <% end %>
             <li><strong>Start date: </strong> <%= @job.start_date %></li>
             <li><strong>End date: </strong> <%= @job.end_date %></li>
             <li><strong>Date posted: </strong> <%= @job.date_posted %></li>
@@ -40,25 +39,22 @@
                 </br>
               <% end %>
             </ul>
+        <div class="text-center p-3">
+            <span>
+              <%= link_to "Add rating", new_job_review_path(@job) %> |
+              <%= link_to "Edit", edit_job_path(@job) %> |
+              <%= link_to "Delete", jobs_path,
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } %>
+            </span>
+        </div>
+        <span>
+          <%= link_to "Back to all missions", jobs_path %> |
+          <%= link_to "Back to my profile", edit_user_registration_path %>
+        </span>
       </div>
 
       <!-- When deleted you are sent back to the job index page -->
-      <div class="edits text-center">
-        <%= link_to "Add rating to this mission", new_job_review_path(@job) %>
-        </br>
-        <%= link_to "Edit", edit_job_path(@job) %>
-        </br>
-        <%= link_to "Delete", jobs_path,
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-        </br>
-        <%= link_to "Back to all missions", jobs_path %>
-        </br>
-        <!-- Go back to your profile -->
-        <%= link_to "Back to my profile", edit_user_registration_path %>
-      </div>
     </div>
   </div>
-</br>
-</br>
-</div>
+<!-- </div> -->

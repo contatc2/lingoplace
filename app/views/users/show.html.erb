@@ -39,13 +39,22 @@
             </ul>
       </div>
 
-<!--           <u>Reviews:</u>
-          </br>
-            <ul>
+        <u>Reviews:</u>
+          <ul>
               <% @user.jobs.each do |job| %>
-              <li><%= job %>
+                <% job.reviews.each do |review| %>
+                    <% review.stars.times do %>
+                      <i class="fas fa-star"></i>
+                    <% end %>
+                    <% (5 - review.stars).times do %>
+                      <i class="far fa-star"></i>
+                    <% end %>
+                  <br>
+                  <%= review.description %>
+                  </br>
+                <% end %>
               <% end %>
-            </li> -->
+            </ul>
 
       <div class="edits text-center">
           <%= link_to "Back to mission", job_path %>
