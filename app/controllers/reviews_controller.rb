@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     if @review.save
       # No need for app/views/reviews/create.html/erb
       # As we are not displaying anything
-      redirect_to job_review_path(@review)
+      redirect_to job_path(@job)
     else
       render :new
     end

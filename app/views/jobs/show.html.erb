@@ -6,7 +6,7 @@
       <div class="card-profile">
           <div class="job-intro text-center">
             <h3><strong><%= @job.name %></strong></h3>
-            <i>Please find below your job attributes</i>
+            <i>Please find below your mission attributes</i>
             </br>
             </br>
           </div>
@@ -14,8 +14,6 @@
           <ul>
             <li><strong>Requester: </strong> <%= "#{@job.user.first_name} #{@job.user.last_name}"%></li>
             <li><strong>Interpreter: </strong> <%= link_to "#{@job.interpreter.first_name} #{@job.interpreter.last_name}", user_path(@job.interpreter) %></li>
-
-
 
           </ul>
           <u>Details:</u>
@@ -28,7 +26,7 @@
             <li><strong>Budget: </strong> <%= @job.budget %></li>
             <li><strong>Status: </strong> <%= @job.status %></li>
           </ul>
-          <u>Ratings:</u>
+          <u>Review:</u>
             <ul>
               <% @job.reviews.each do |review| %>
                 <% review.stars.times do %>
@@ -39,19 +37,22 @@
                 <% end %>
                 </br>
                 <%= review.description %>
+                </br>
               <% end %>
             </ul>
       </div>
 
       <!-- When deleted you are sent back to the job index page -->
       <div class="edits text-center">
+        <%= link_to "Add rating to this mission", new_job_review_path(@job) %>
+        </br>
         <%= link_to "Edit", edit_job_path(@job) %>
         </br>
         <%= link_to "Delete", jobs_path,
               method: :delete,
               data: { confirm: "Are you sure?" } %>
         </br>
-        <%= link_to "Back to all jobs", jobs_path %>
+        <%= link_to "Back to all missions", jobs_path %>
         </br>
         <!-- Go back to your profile -->
         <%= link_to "Back to my profile", edit_user_registration_path %>

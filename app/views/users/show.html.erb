@@ -38,6 +38,22 @@
                   <% end %>
             </ul>
       </div>
+
+<!--           <u>Reviews:</u>
+          </br>
+            <ul>
+              <% @user.jobs.each do |job| %>
+              <li><%= job %>
+              <% end %>
+            </li> -->
+
+      <div class="edits text-center">
+          <%= link_to "Back to mission", job_path %>
+        </br>
+          <%= link_to "Back to all missions", jobs_path %>
+        </br>
+          <%= link_to "Back to my profile", edit_user_registration_path %>
+      </div>
     </div>
   </div>
 </div>
