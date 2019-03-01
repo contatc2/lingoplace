@@ -9,10 +9,12 @@
         <%= f.association :language %>
       <% end %>
       <%= f.hidden_field :interpreter_id, value: params[:interpreter] %>
-      <%= f.input :start_date, as: :date, html5: true, html: { class: "form-horizontal" }, input_html: {value: Date.today} %>
-      <%= f.input :end_date, as: :date, html5: true, html: { class: "form-horizontal" }, input_html: {value: Date.today} %>
+      <div class="form-inline d-flex justify-content-between mb-2">
+        <%= f.input :start_date, as: :date, html5: true, input_html: {value: Date.today} %>
+        <%= f.input :end_date, as: :date, html5: true, input_html: {value: Date.today} %>
+      </div>
       <%= f.input :budget, as: :integer, label: 'Budget in pounds £' %>
-      <%= f.button :submit, input_html: {class:'btn btn-primary'} %>
+      <%= f.button :submit, class: 'btn-outline-success float-right btn-lg' %>
     <% end %>
 
 <!-- Looking for a way to puth the end date and start date input fields on one same line, html: { class: 'form-horizontal' }, wrapper: :horizontal_form -->
