@@ -1,26 +1,35 @@
-<div class="row" style="background-image: url(../images/rawpixel-658253-unsplash.jpg)">
-  <div class="col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
-    <h1>List of jobs</h1>
+  <div class="row justify-content-around">
+    <div class="col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
+      <div class="card mt-5 p-2" style="height:95%;">
+          <div class="row text-center pb-3">
 
-    <% @jobs.each do |job| %>
-    <li> <%= link_to job.name, job_path(job) %> </li>
-    <p><%= job.language %></p>
-    <p><%= job.description %></p>
-    <p><%= job.budget %></p>
-    <% end %>
+            <div class="row d-flex justify-content-center" style="background-image: url(../images/rawpixel-658253-unsplash.jpg)">
+              <div class="col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
+                <strong><h2>List of missions</h2></strong>
 
-    </br>
-    </br>
+                <% @jobs.each do |job| %>
+                <p> ----------------------------------- </p>
+                <%= link_to job.name, job_path(job) %>
+                <p><%= job.language %></p>
+                <p>Description: <%= job.description %></p>
+                <p>Price: <%= job.budget %> USD </p>
+                <% end %>
+                </br>
+                </br>
 
-    <!-- Add a new job -->
+                <!-- Add a new job -->
 
-    <%= link_to "Add new job", edit_user_registration_path %>
+                <%= link_to "Add new translation mission", new_job_path %>
 
-    </br>
-    </br>
+                </br>
+                </br>
 
-    <!-- Go back to your profile -->
+                <!-- Go back to your profile -->
 
-    <%= link_to "Back to my profile",edit_user_registration_path(@user) %>
-  </div>
-</div>
+                <%= link_to "Back to my profile",edit_user_registration_path(@user) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
