@@ -5,6 +5,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   def new
