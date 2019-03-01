@@ -6,8 +6,19 @@
 //   background-position: top;
 //   // background-color: rgba(71, 154, 224, 0.3);
 // }
+body {
+  margin: 0 !important;
+}
 
+.background-image {
+  width: 100%;
+}
 
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
 // .row {
 
 //   height: 100%;
