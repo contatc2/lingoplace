@@ -9,10 +9,11 @@
       <% else %>
         <%= f.association :language %>
       <% end %>
-      <%= f.input :start_date, as: :date, html5: true, html: { class: "form-horizontal" }, input_html: {value: Date.today} %>
-      <%= f.input :end_date, as: :date, html5: true, html: { class: "form-horizontal" }, input_html: {value: Date.today} %>
-      <%= f.input :budget, as: :integer, label: 'Budget in pounds £' %>
-      <%= f.button :submit, input_html: {class:'btn btn-primary'} %>
-    <% end %>
+      <div class="form-inline d-flex justify-content-between mb-2">
+        <%= f.input :start_date, as: :date, html5: true, input_html: {value: Date.today} %>
+        <%= f.input :end_date, as: :date, html5: true, input_html: {value: Date.today} %>
+      </div>
 
-<!-- Looking for a way to puth the end date and start date input fields on one same line, html: { class: 'form-horizontal' }, wrapper: :horizontal_form -->
+      <%= f.input :budget, as: :integer, label: 'Budget in pounds £' %>
+      <%= f.button :submit, class: 'btn-outline-success float-right btn-lg' %>
+    <% end %>
