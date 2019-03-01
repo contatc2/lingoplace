@@ -12,7 +12,10 @@
             <img src="<%="#{@user.picture}"%>", class="rounded-circle", width=100px>
           </div>
           <div class="profile-name">
+            <div class="d-flex justify-content-start">
              <h3><strong><%= @user.first_name %> <%= @user.last_name.upcase%></strong></h3>
+             <%= link_to "Book", new_job_path(interpreter: @user.id), class:"btn btn-success ml-5" %>
+            </div>
               <u>Description:</u>
               </br>
               <%= @user.description %>

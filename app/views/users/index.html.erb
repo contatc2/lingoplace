@@ -1,4 +1,4 @@
-<h1>Find the best interpreter for the job</h1>
+<h1>Find the best interpreter for your mission</h1>
 <div class="cards">
   <% @users.each do |user| %>
     <% if user.interpreter = true %>
@@ -16,10 +16,9 @@
     <% end  %>
   <% end %>
 </div>
-</br>
-</br>
 
-<!-- Go back to your profile -->
 
-<%= link_to "Back to my profile",edit_user_registration_path(@user) %>
+<!-- Go back to your dashboard -->
+
+<%= link_to "Back to my Dashboard", dashboard_path(current_user) %>
 
