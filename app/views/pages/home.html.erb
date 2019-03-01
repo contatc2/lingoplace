@@ -1,21 +1,24 @@
 
 <div class="row">
-  <div class="col-sm-offset-1 col-sm-8 col-sm-2 col-xs-offset-1 col-xs-10">
-    <h1>The place for your translation needs</h1>
-    <h2>Broadern your reach with <strong>LingoPlace</strong> the translation market place.</h2>
+  <div class="col-md-6">
+    <div div class=" mt-4 pt-4">
+      <h1>We open up language to everyone</h1>
+      <h2>Professional translation services made easy. Crafted by expert humans, powered by technology, efficiently delivered.</h2>
+    </div>
+    <div class="align-bottom md-12  md-8 ml-4 pd-10 mt-4 pt-4 float-right">
+      <%= link_to new_user_registration_path :interpreter => true do %>
+        <button type="button" class="btn-lg btn-outline-primary">
+          sign up as Interpreter
+        </button>
+      <% end %>
+      <%= link_to new_user_registration_path do %>
+        <button type="button" class="btn-lg btn-outline-success">
+          Post a job
+        </button>
+      <% end %>
+    </div>
   </div>
-  <div><P><img src="http://bestanimations.com/Earth&Space/Earth/earthglobeanimation/globe-earth-animation-7.gif" align = "right">
-  </div>
-  <div class="col-sm-offset-1 col-sm-8 col-sm-2 col-xs-offset-1 col-xs-10">
-    <%= link_to new_user_registration_path :interpreter => true do %>
-      <div class="btn btn-primary">
-        sign up as interpreter
-      </div>
-    <% end %>
-    <%= link_to new_user_registration_path do %>
-      <div class="btn btn-primary">
-        Post a job
-      </div>
-    <% end %>
+  <div class="col-md-6 md-12">
+    <img src="../../assets/soffione-translated@2x.png" width="100%">
   </div>
 </div>
