@@ -20,7 +20,6 @@ class JobsController < ApplicationController
     else
       render :new
     end
-    raise
   end
 
   def edit
