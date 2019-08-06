@@ -19,6 +19,7 @@
 
 
 <!-- Go back to your dashboard -->
-
+<% if user_signed_in? %>
 <%= link_to "Back to my Dashboard", dashboard_path(current_user) %>
+<% end %>
 

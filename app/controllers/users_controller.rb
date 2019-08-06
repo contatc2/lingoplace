@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @jobs = Job.where(interpreter: @user)
   end
 
   def dashboard

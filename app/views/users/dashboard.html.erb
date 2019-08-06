@@ -14,7 +14,7 @@
 
 </div>
 
-<!-- exixting jobs -->
+<!-- existing jobs -->
 <div>
   <h2>Existing jobs</h2>
 
@@ -28,7 +28,7 @@
           <h2><%= job.name %></h2>
           <p><%= job.description %></p>
           <p><%= @interpreter.first_name  %> <%= @interpreter.last_name  %></p>
-          <p><%= job.language %></p>
+          <p><%= job.language.name %></p>
         </div>
         <div>
           <p class="btn btn-success"><%= job.status %></p>
@@ -47,18 +47,13 @@
     <%= link_to user_path(user), class: "no-hover" do %>
       <div class="card-product my-3">
         <!-- replace image with the interpreter image with cloudinary? -->
-
+          <img src=<%= user.picture %> >
         <div class="card-product-infos">
-          <img src=<%= user.picture %> ><br>
-          <%= user.first_name  %> <%= user.last_name %>
-          <%= user.description %>
-          <% user.daily_rate %>
-          <% user.languages.each do |language| %>
-          <%= language.name %>
-          <% end %>
-        </div>
-        <div>
-          <%= link_to "Book", new_job_path(lquery: params[:query], interpreter: user.id) %>
+          <h2><%= user.first_name  %> <%= user.last_name %></h2>
+          <p><%= user.description %></p>
+          <p><%= user.daily_rate %></p>
+          <p class='mb-3'><strong><%= user.display_languages %></strong></p>
+        <%= link_to "Book", new_job_path(lquery: params[:query], interpreter: user.id), class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>

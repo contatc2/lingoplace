@@ -36,15 +36,13 @@
               <li> <strong>Willing to travel:</strong> <%= @user.can_travel ? "YES" : "NO" %> </li>
               <li> <strong>LinkedIn profile:</strong> <%= @user.linkedin %> </li>
               <u> <strong>Spoken languages:</strong></u>
-                  <% @user.languages.each do |language| %>
-                      <li><%= language.name %></p></li>
-                  <% end %>
+                  <%=  @user.display_languages%>
             </ul>
       </div>
 
         <u>Reviews:</u>
           <ul>
-              <% @user.jobs.each do |job| %>
+              <% @jobs.each do |job| %>
                 <% job.reviews.each do |review| %>
                     <% review.stars.times do %>
                       <i class="fas fa-star"></i>

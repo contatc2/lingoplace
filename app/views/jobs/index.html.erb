@@ -10,7 +10,7 @@
                 <% @jobs.each do |job| %>
                 <p> ----------------------------------- </p>
                 <%= link_to job.name, job_path(job) %>
-                <p><%= job.language %></p>
+                <p><%= job.language.name %></p>
                 <p>Description: <%= job.description %></p>
                 <p>Price: <%= job.budget %> USD </p>
                 <% end %>
