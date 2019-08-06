@@ -1,9 +1,9 @@
 puts 'Cleaning database...'
-User.destroy_all
+Review.destroy_all
 Job.destroy_all
 InterpreterLanguage.destroy_all
+User.destroy_all
 Language.destroy_all
-Review.destroy_all
 
 
 puts 'Creating languages...'
