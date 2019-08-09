@@ -5,7 +5,9 @@ class JobsController < ApplicationController
     @markers = @jobs.map do |job|
       {
         lng: job.longitude,
-        lat: job.latitude
+        lat: job.latitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { job: job }),
+        image_url: helpers.asset_url('https://t3.ftcdn.net/jpg/01/08/32/44/240_F_108324485_K0du9beLUgh5hpcHzJep5VXYhP2YR0Ec.jpg')
       }
     end
   end
