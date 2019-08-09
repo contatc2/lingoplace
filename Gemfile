@@ -9,6 +9,7 @@ gem 'puma'
 gem 'rails', '5.2.2'
 gem 'redis'
 gem 'pg_search'
+gem 'geocoder'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass', '~> 5.5.0'
@@ -19,6 +20,7 @@ gem 'webpacker'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'htmlbeautifier'
 end
 
 group :development, :test do
