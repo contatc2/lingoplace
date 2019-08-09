@@ -1,7 +1,13 @@
 class JobsController < ApplicationController
   before_action :find_job, only: %i[show edit update destroy]
   def index
-    @jobs = Job.all
+    @jobs = Job.where.not(latitude: nil, longitude: nil)
+    @markers = @jobs.map do |job|
+      {
+        lng: job.longitude,
+        lat: job.latitude
+      }
+    end
   end
 
   def show

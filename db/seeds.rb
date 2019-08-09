@@ -121,6 +121,7 @@ job_1= Job.create!(
   date_posted:      Date.today,
   budget: 50000000,
   status:     'Not started',
+  address: 'paris',
   user: james,
   interpreter: laetitia,
 )
@@ -133,6 +134,7 @@ job_2= Job.create!(
   date_posted:   Date.today,
   budget: 10000000,
   status:     'Not started',
+  address: 'istanbul',
   user: james,
   interpreter: selcuk,
 )
@@ -145,6 +147,7 @@ job_3= Job.create!(
   date_posted:   Date.today,
   budget: 1,
   status:     'Not started',
+  address: 'mumbai',
   user: gadget,
   interpreter: gaston,
 )
@@ -157,6 +160,7 @@ job_4= Job.create!(
   date_posted:  'DateTime.strptime("09/08/2013 17:00", "%m/%d/%Y %H:%M"),',
   budget: 1,
   status:     'Completed',
+  address: 'miami',
   user: james,
   interpreter: laetitia,
 )
