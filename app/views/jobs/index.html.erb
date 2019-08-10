@@ -1,5 +1,5 @@
 <div class="text-center my-3">
-  <h2>List of missions</h2>
+  <h1>List of missions</h1>
   <div
   id="map"
   class='my-3'
@@ -10,12 +10,14 @@
 ></div>
   <div class="cards-grid my-5 p-2" style="height:95%;">
     <% @jobs.each do |job| %>
-      <div class="card-job text-center">
-        <%= link_to job.name, job_path(job) %>
-        <p><%= job.language.name %></p>
-        <p>Description: <%= job.description %></p>
-        <p>Price: <%= job.budget %> USD </p>
-      </div>
+      <%= link_to job_path(job), {class: 'job-link'}  do %>
+        <div class="card-job text-center">
+          <h4><%= job.name %></h4>
+          <p><%= job.language.name %></p>
+          <p>Description: <%= job.description %></p>
+          <p>Price: <%= job.budget %> USD </p>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <!-- Add a new job -->

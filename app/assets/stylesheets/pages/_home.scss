@@ -1,9 +1,12 @@
 // Specific CSS for your home-page
-/*body {
-  background-color: rgba(71, 154, 224, 0.3);
-}*/
+
 body {
   margin: 0 !important;
+  background-color: white;
+}
+
+h1, h2 {
+  font-weight: bold;
 }
 
 .min-height {

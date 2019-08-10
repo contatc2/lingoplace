@@ -1,71 +1,54 @@
-<div class="container">
-
-  </br>
-  </br>
-
-  <div class="row justify-content-around">
-
-    <div class="col-sm-8">
-      <div class="card-profile">
-        <div class="profile-intro d-flex space-around">
-          <div class="profile-img space-around", style="padding-right: 20px; padding-bottom: 20px;">
-            <img src="<%="#{@user.picture}"%>", class="rounded-circle", width=100px>
-          </div>
-          <div class="profile-name">
-            <div class="d-flex justify-content-start">
-             <h3><strong><%= @user.first_name %> <%= @user.last_name.upcase%></strong></h3>
-             <%= link_to "Book", new_job_path(interpreter: @user.id), class:"btn btn-success ml-5" %>
-            </div>
-              <u>Description:</u>
-              </br>
-              <%= @user.description %>
-              </br>
-              </br>
-          </div>
-
+<div class="row justify-content-around mt-5">
+  <div class="col-sm-8">
+    <div class="card-show mb-5">
+      <div class="d-flex space-around">
+        <div class="pr-3 pb-3">
+          <img src="<%="#{@user.picture}"%>", class="rounded-circle", width=100px>
         </div>
-
-          <u>Personal details:</u>
-          </br>
-            <ul>
-              <li> <strong>Email:</strong> <%= @user.email %> </li>
-              <li> <strong>Phone number:</strong> <%= @user.phone %> </li>
-              <li> <strong>Daily rate:</strong> <%= @user.daily_rate %> </li>
-              <li> <strong>Address:</strong> <%= @user.location %> </li>
-              <li> <strong>Availability:</strong> <%= @user.availability ? "YES" : "NO" %> </li>
-              <li> <strong>Willing to travel:</strong> <%= @user.can_travel ? "YES" : "NO" %> </li>
-              <li> <strong>LinkedIn profile:</strong> <%= @user.linkedin %> </li>
-              <u> <strong>Spoken languages:</strong></u>
-                  <%=  @user.display_languages%>
-            </ul>
+        <div>
+          <div class="d-flex mb-3">
+            <h3><strong><%= @user.first_name %> <%= @user.last_name.upcase%></strong></h3>
+            <%= link_to "Book", new_job_path(interpreter: @user.id), class:"btn btn-success ml-5" %>
+          </div>
+          <u>Description:</u>
+          <%= @user.description %>
+        </div>
       </div>
-
+      <div>
+        <u>Personal details:</u>
+        <ul>
+          <li> <strong>Email:</strong> <%= @user.email %> </li>
+          <li> <strong>Phone number:</strong> <%= @user.phone %> </li>
+          <li> <strong>Daily rate:</strong> <%= @user.daily_rate %> </li>
+          <li> <strong>Address:</strong> <%= @user.location %> </li>
+          <li> <strong>Availability:</strong> <%= @user.availability ? "YES" : "NO" %> </li>
+          <li> <strong>Willing to travel:</strong> <%= @user.can_travel ? "YES" : "NO" %> </li>
+          <li> <strong>LinkedIn profile:</strong> <%= @user.linkedin %> </li>
+          <u> <strong>Spoken languages:</strong></u>
+          <%=  @user.display_languages%>
+        </ul>
+      </div>
+      <div>
         <u>Reviews:</u>
-          <ul>
-              <% @jobs.each do |job| %>
-                <% job.reviews.each do |review| %>
-                    <% review.stars.times do %>
-                      <i class="fas fa-star"></i>
-                    <% end %>
-                    <% (5 - review.stars).times do %>
-                      <i class="far fa-star"></i>
-                    <% end %>
-                  <br>
-                  <%= review.description %>
-                  </br>
-                <% end %>
+        <ul>
+          <% @jobs.each do |job| %>
+            <% job.reviews.each do |review| %>
+              <% review.stars.times do %>
+                <i class="fas fa-star"></i>
               <% end %>
-            </ul>
-
-      <div class="edits text-center">
-          <%= link_to "Back to mission", job_path %>
-        </br>
-          <%= link_to "Back to all missions", jobs_path %>
-        </br>
-          <%= link_to "Back to my profile", edit_user_registration_path %>
+              <% (5 - review.stars).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+              <%= review.description %>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
+    </div>
+    <div class="text-center">
+      <%= link_to "Back to mission", job_path %> |
+      <%= link_to "Back to all missions", jobs_path %> |
+      <%= link_to "Back to my profile", edit_user_registration_path %>
     </div>
   </div>
 </div>
-
-

@@ -1,14 +1,13 @@
-<h1>Find the best interpreter for your mission</h1>
+<h1 class='my-5'>Find the best interpreter for your mission</h1>
 <div class="cards">
   <% @users.each do |user| %>
     <% if user.interpreter = true %>
       <div class="col-sm-3">
         <%= link_to user_path(user) do %>
-          <div class="card" style="background-image: url(<%="#{user.picture}"%>)">
-            <div div class="card-text">
+          <div class="card" style="background-image: url('<%=user.picture%>')">
+            <div class="card-text">
               <p><%= user.first_name %>&nbsp;</p>
               <p><%= user.last_name %></p>
-              <p><% user.email %></p>
             </div>
           </div>
         <% end %>
@@ -16,10 +15,7 @@
     <% end  %>
   <% end %>
 </div>
-
-
 <!-- Go back to your dashboard -->
 <% if user_signed_in? %>
-<%= link_to "Back to my Dashboard", dashboard_path(current_user) %>
+  <%= link_to "Back to my Dashboard", dashboard_path(current_user), {class: 'btn btn-primary mt-5'} %>
 <% end %>
-

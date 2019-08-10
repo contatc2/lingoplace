@@ -1,89 +1,78 @@
-<!-- <div class="container"> -->
-
-  <div class="row justify-content-around">
-    <div class="col-sm-offset-2 col-sm-8 col-xs-offset-1 col-xs-10">
-      <div class="card mt-5 p-3" style="height:95%;">
-          <div class="text-center pb-3">
-            <h2><%= @job.name %></h2>
-            <p>Your mission details:</p>
-          </div>
-          <u>Team</u>
-          <ul>
-            <li><strong>Requester: </strong> <%= "#{@job.user.first_name} #{@job.user.last_name}"%></li>
-            <li><strong>Interpreter: </strong> <%= link_to "#{@job.interpreter.first_name} #{@job.interpreter.last_name}", user_path(@job.interpreter) %></li>
-
-          </ul>
-          <u>Details</u>
-          <ul>
-            <li><strong>Description: </strong> </li><%= @job.description %></li>
-            <% if @job.language %>
-              <li><strong>Language: </strong> <%= @job.language.name %></li>
-            <% end %>
-            <li><strong>Start date: </strong> <%= @job.start_date %></li>
-            <li><strong>End date: </strong> <%= @job.end_date %></li>
-            <li><strong>Date posted: </strong> <%= @job.date_posted %></li>
-            <li><strong>Budget: </strong> <%= @job.budget %></li>
-            <li><strong>Status: </strong> <%= @job.status %></li>
-          </ul>
-          <u>Review:</u>
-            <ul>
-              <% @job.reviews.each do |review| %>
-                <% review.stars.times do %>
-                  <i class="fas fa-star"></i>
-                <% end %>
-                <% (5 - review.stars).times do %>
-                  <i class="far fa-star"></i>
-                <% end %>
-                </br>
-                <%= review.description %>
-                </br>
-              <% end %>
-            </ul>
-        <div class="text-center p-3">
-            <span>
-              <%= link_to "Add rating", new_job_review_path(@job) %> |
-              <%= link_to "Edit", edit_job_path(@job) %> |
-              <%= link_to "Delete", jobs_path,
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } %>
-            </span>
-        </div>
-        <span>
-          <%= link_to "Back to all missions", jobs_path %> |
-          <%= link_to "Back to my profile", edit_user_registration_path %>
-        </span>
-
-      </br>
-      <strong> Add a review </strong>
-    <i> We would like to know your feedback </i>
-    </br>
-    <%= simple_form_for [@job, @review] do |f|%>
-      <%#= f.association :job | no need for associations see above @job%>
-      <%= f.input :description %>
-      <%= f.input :stars, as: :hidden %>
-
-      <div class="rating">
-        <input type="radio" id="star5" name="rate" value="5" />
-        <label for="star5" title="text"></label>
-        <input type="radio" id="star4" name="rate" value="4" />
-        <label for="star4" title="text"></label>
-        <input type="radio" id="star3" name="rate" value="3" />
-        <label for="star3" title="text"></label>
-        <input type="radio" id="star2" name="rate" value="2" />
-        <label for="star2" title="text"></label>
-        <input type="radio" id="star1" name="rate" value="1" />
-        <label for="star1" title="text"></label>
+<div class="row">
+  <div class="col-sm-8 offset-sm-2 col-xs-10 offset-xs-1">
+    <div class="card-show mt-5">
+      <div class="text-center pb-3">
+        <h2><%= @job.name %></h2>
+        <p>Your mission details:</p>
       </div>
-
-        </br>
-        </br>
-        <%= f.submit "Submit", class: 'btn btn-primary' %>
+      <u>Team</u>
+      <ul>
+        <li><strong>Requester: </strong> <%= "#{@job.user.first_name} #{@job.user.last_name}"%></li>
+        <li><strong>Interpreter: </strong> <%= link_to "#{@job.interpreter.first_name} #{@job.interpreter.last_name}", user_path(@job.interpreter) %></li>
+      </ul>
+      <u>Details</u>
+      <ul>
+        <li><strong>Description: </strong> </li>
+        <%= @job.description %></li>
+      <% if @job.language %>
+        <li><strong>Language: </strong> <%= @job.language.name %></li>
+      <% end %>
+      <li><strong>Start date: </strong> <%= @job.start_date %></li>
+      <li><strong>End date: </strong> <%= @job.end_date %></li>
+      <li><strong>Date posted: </strong> <%= @job.date_posted %></li>
+      <li><strong>Budget: </strong> <%= @job.budget %></li>
+      <li><strong>Status: </strong> <%= @job.status %></li>
+    </ul>
+    <u>Review:</u>
+    <ul>
+      <% @job.reviews.each do |review| %>
+        <% review.stars.times do %>
+          <i class="fas fa-star"></i>
         <% end %>
-        </br>
-        <%= link_to "Cancel", job_path(@job) %>
-      </div>
-
-      <!-- When deleted you are sent back to the job index page -->
-    </div>
+        <% (5 - review.stars).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      </br>
+      <%= review.description %>
+    </br>
+  <% end %>
+</ul>
+<div class="text-center">
+  <span>
+    <%= link_to "Add rating", new_job_review_path(@job) %> |
+    <%= link_to "Edit", edit_job_path(@job) %> |
+    <%= link_to "Delete", jobs_path,
+                          method: :delete,
+                          data: { confirm: "Are you sure?" } %>
+  </span>
 </div>
-<!-- </div> -->
+</div>
+<div class="card-show mt-3">
+  <div class="my-3">
+    <strong> Add a review </strong>
+    <i> We would like to know your feedback </i>
+  </div>
+  <%= simple_form_for [@job, @review] do |f|%>
+    <%= f.input :description %>
+    <%= f.input :stars, as: :hidden %>
+    <div class="rating">
+      <input type="radio" id="star5" name="rate" value="5" />
+      <label for="star5" title="text"></label>
+      <input type="radio" id="star4" name="rate" value="4" />
+      <label for="star4" title="text"></label>
+      <input type="radio" id="star3" name="rate" value="3" />
+      <label for="star3" title="text"></label>
+      <input type="radio" id="star2" name="rate" value="2" />
+      <label for="star2" title="text"></label>
+      <input type="radio" id="star1" name="rate" value="1" />
+      <label for="star1" title="text"></label>
+    </div>
+    <%= f.submit "Submit", class: 'btn btn-primary ml-5' %>
+  <% end %>
+</div>
+<div class='my-3'>
+  <%= link_to "Back to all missions", jobs_path %> |
+  <%= link_to "Back to my profile", edit_user_registration_path %>
+</div>
+</div>
+</div>

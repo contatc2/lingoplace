@@ -1,65 +1,52 @@
 <h1>My Dashboard</h1>
-
-
 <!-- search form -->
-
-<div>
+<div class='my-5'>
   <%= form_tag dashboard_path, method: :get do %>
-  <%= text_field_tag :query,
+    <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "choose a language"
   %>
-<% end %>
-
+  <% end %>
 </div>
-
 <!-- existing jobs -->
 <div>
   <h2>Existing jobs</h2>
-
   <% @jobs.each do |job| %>
     <% @interpreter = User.find(job.interpreter_id) %>
     <%= link_to job_path(job), class: "no-hover" do %>
       <div class="card-product my-3">
-        <!-- replace image with the interpreter image with cloudinary? -->
         <img src=<%= @interpreter.picture %> >
         <div class="card-product-infos">
           <h2><%= job.name %></h2>
           <p><%= job.description %></p>
           <p><%= @interpreter.first_name  %> <%= @interpreter.last_name  %></p>
-          <p><%= job.language.name %></p>
-        </div>
-        <div>
-          <p class="btn btn-success"><%= job.status %></p>
+          <div class='card-product-book'>
+            <p><strong><%= job.language.name %></strong></p>
+            <p class="btn btn-success"><%= job.status %></p>
+          </div>
         </div>
       </div>
     <% end %>
   <% end %>
 </div>
-
 <!-- List of interpreters -->
-
-<div>
+<div class='mt-5'>
   <h2>List of interpreters</h2>
-
   <% @users.each do |user| %>
     <%= link_to user_path(user), class: "no-hover" do %>
       <div class="card-product my-3">
-        <!-- replace image with the interpreter image with cloudinary? -->
-          <img src=<%= user.picture %> >
+        <img src=<%= user.picture %> >
         <div class="card-product-infos">
           <h2><%= user.first_name  %> <%= user.last_name %></h2>
           <p><%= user.description %></p>
           <p><%= user.daily_rate %></p>
-          <p class='mb-3'><strong><%= user.display_languages %></strong></p>
-        <%= link_to "Book", new_job_path(lquery: params[:query], interpreter: user.id), class: "btn btn-primary" %>
+          <div class="card-product-book">
+            <p class='mb-3'><strong><%= user.display_languages %></strong></p>
+            <%= link_to "Book", new_job_path(lquery: params[:query], interpreter: user.id), class: "btn btn-primary" %>
+          </div>
         </div>
       </div>
     <% end %>
   <% end %>
-
 </div>
-
-
-
