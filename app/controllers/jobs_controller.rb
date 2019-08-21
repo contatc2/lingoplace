@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :find_job, only: %i[show edit update destroy]
   def index
-    @jobs = Job.where.not(latitude: nil, longitude: nil)
+    @jobs = Job.geocoded
     @markers = @jobs.map do |job|
       {
         lng: job.longitude,
@@ -43,15 +43,17 @@ class JobsController < ApplicationController
   end
 
   def destroy
-    @user = @job.user
     @job.destroy
-    redirect_to edit_user_registration_path
+    respond_to do |format|
+      format.html { redirect_to jobs_path, notice: 'The mission has been deleted' }
+      format.js
+    end
   end
 
   private
 
   def job_params
-    params.require(:job).permit(:name, :description, :budget, :start_date, :end_date, :language_id, :interpreter_id)
+    params.require(:job).permit(:name, :description, :budget, :start_date, :end_date, :language_id, :interpreter_id, :address)
   end
 
   def find_job

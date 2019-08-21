@@ -32,7 +32,7 @@
     <div class="text-center">
       <span>
         <%= link_to "Edit", edit_job_path(@job) %> |
-        <%= link_to "Delete", jobs_path,
+        <%= link_to "Delete", job_path(@job),
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
       </span>

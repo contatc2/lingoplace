@@ -5,10 +5,10 @@
   <% if params[:lquery].present? %>
     <%= f.association :language, label_method: :name, value_method: :id, selected: Language.find_by(name: params[:lquery].capitalize).id %>
     <%#= f.input :language_id, input_html: {value: Language.where("name ILIKE ?", "%#{params[:lquery]}%").ids} %>
-    <%= f.hidden_field :interpreter_id, value: params[:interpreter] %>
   <% else %>
     <%= f.association :language %>
   <% end %>
+  <%= f.hidden_field :interpreter_id, value: params[:interpreter] %>
   <div class="form-inline d-flex justify-content-between mb-2">
     <%= f.input :start_date, as: :date, html5: true, input_html: {value: Date.today} %>
     <%= f.input :end_date, as: :date, html5: true, input_html: {value: Date.today} %>

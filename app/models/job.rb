@@ -8,6 +8,7 @@ class Job < ApplicationRecord
   belongs_to :language
 
   validates :name, presence: true
+  validates :address, presence: true
   validates :description, presence: true
   validates :language, presence: true
 end

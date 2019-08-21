@@ -10,14 +10,15 @@
 ></div>
   <div class="cards-grid my-5 p-2" style="height:95%;">
     <% @jobs.each do |job| %>
-      <%= link_to job_path(job), {class: 'job-link'}  do %>
-        <div class="card-job text-center">
-          <h4><%= job.name %></h4>
-          <p><%= job.language.name %></p>
-          <p>Description: <%= job.description %></p>
-          <p>Price: <%= job.budget %> USD </p>
-        </div>
-      <% end %>
+      <div data-job-id="<%= job.id %>" class="card-job text-center">
+        <h4><%= job.name %></h4>
+        <p><%= job.language.name %></p>
+        <p>Description: <%= job.description %></p>
+        <p>Price: <%= job.budget %> USD </p>
+        <%= link_to 'see mission',job_path(job), {class: 'job-link'}  %> |
+        <%= link_to 'delete mission', job_path(job), method: :delete,
+                          data: { confirm: "Are you sure?" }, class: 'job-link', remote: true %>
+      </div>
     <% end %>
   </div>
   <!-- Add a new job -->
