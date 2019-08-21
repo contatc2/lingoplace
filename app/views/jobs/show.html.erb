@@ -23,56 +23,31 @@
       <li><strong>Budget: </strong> <%= @job.budget %></li>
       <li><strong>Status: </strong> <%= @job.status %></li>
     </ul>
-    <u>Review:</u>
-    <ul>
+    <div id="reviews">
+      <u>Reviews:</u>
       <% @job.reviews.each do |review| %>
-        <% review.stars.times do %>
-          <i class="fas fa-star"></i>
-        <% end %>
-        <% (5 - review.stars).times do %>
-          <i class="far fa-star"></i>
-        <% end %>
-      </br>
-      <%= review.description %>
-    </br>
-  <% end %>
-</ul>
-<div class="text-center">
-  <span>
-    <%= link_to "Add rating", new_job_review_path(@job) %> |
-    <%= link_to "Edit", edit_job_path(@job) %> |
-    <%= link_to "Delete", jobs_path,
+        <%= render 'reviews/show', review: review %>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <span>
+        <%= link_to "Edit", edit_job_path(@job) %> |
+        <%= link_to "Delete", jobs_path,
                           method: :delete,
                           data: { confirm: "Are you sure?" } %>
-  </span>
-</div>
-</div>
-<div class="card-show mt-3">
-  <div class="my-3">
-    <strong> Add a review </strong>
-    <i> We would like to know your feedback </i>
-  </div>
-  <%= simple_form_for [@job, @review] do |f|%>
-    <%= f.input :description %>
-    <%= f.input :stars, as: :hidden %>
-    <div class="rating">
-      <input type="radio" id="star5" name="rate" value="5" />
-      <label for="star5" title="text"></label>
-      <input type="radio" id="star4" name="rate" value="4" />
-      <label for="star4" title="text"></label>
-      <input type="radio" id="star3" name="rate" value="3" />
-      <label for="star3" title="text"></label>
-      <input type="radio" id="star2" name="rate" value="2" />
-      <label for="star2" title="text"></label>
-      <input type="radio" id="star1" name="rate" value="1" />
-      <label for="star1" title="text"></label>
+      </span>
     </div>
-    <%= f.submit "Submit", class: 'btn btn-primary ml-5' %>
-  <% end %>
-</div>
-<div class='my-3'>
-  <%= link_to "Back to all missions", jobs_path %> |
-  <%= link_to "Back to my profile", edit_user_registration_path %>
-</div>
+  </div>
+  <div class="card-show mt-3">
+    <div class="my-3">
+      <strong> Add a review </strong>
+      <i> We would like to know your feedback </i>
+    </div>
+    <%= render 'reviews/form',job: @job, review: @review %>
+  </div>
+  <div class='my-3'>
+    <%= link_to "Back to all missions", jobs_path %> |
+    <%= link_to "Back to my profile", edit_user_registration_path %>
+  </div>
 </div>
 </div>

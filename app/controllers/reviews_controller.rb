@@ -6,20 +6,19 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
   end
 
-  def show
-  end
-
-  def new
-    @review = Review.new
-  end
-
   def create
     @review = Review.new(review_params)
     @review.job = @job
     if @review.save
-      redirect_to job_path(@job)
+      respond_to do |format|
+        format.html { redirect_to job_path(@job) }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'jobs/show' }
+        format.js
+      end
     end
   end
 

@@ -1,11 +1,7 @@
-<h3> Add a review </h3>
-<p> We would like to know your feedback </p>
-
-<%= simple_form_for [@job, @review] do |f|%>
-  <%#= f.association :job | no need for associations see above @job%>
+<!-- form doesn't handle edit right now, the starts value is set, but the stars don't update -->
+<%= simple_form_for([job, review], remote: true) do |f|%>
   <%= f.input :description %>
   <%= f.input :stars, as: :hidden %>
-
   <div class="rating">
     <input type="radio" id="star5" name="rate" value="5" />
     <label for="star5" title="text"></label>
@@ -18,12 +14,5 @@
     <input type="radio" id="star1" name="rate" value="1" />
     <label for="star1" title="text"></label>
   </div>
-
-</br>
-</br>
-<%= f.submit "Submit", class: 'btn btn-primary' %>
+  <%= f.submit "Submit", class: 'btn btn-primary ml-5' %>
 <% end %>
-
-</br>
-
-<%= link_to "Cancel", job_path(@job) %>

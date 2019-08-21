@@ -1,0 +1,10 @@
+reviewForm = document.getElementById('new_review')
+
+<% if @review.persisted? %>
+  newReview = "<%= j render 'reviews/show', review: @review %>"
+  reviews = document.getElementById('reviews')
+  reviews.insertAdjacentHTML('beforeend', newReview)
+  reviewForm.innerHTML = "<%= j render 'reviews/form', job: @job, review: Review.new %>"
+<% else %>
+  reviewForm.innerHTML = "<%= j render 'reviews/form', job: @job, review: @review %>"
+<% end %>

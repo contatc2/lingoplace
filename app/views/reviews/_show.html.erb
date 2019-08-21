@@ -1,0 +1,9 @@
+<div class="mb-3">
+  <% review.stars.times do %>
+    <i class="fas fa-star"></i>
+  <% end %>
+  <% (5 - review.stars).times do %>
+    <i class="far fa-star"></i>
+  <% end %>
+  <%= review.description %>
+</div>
